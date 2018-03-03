@@ -1,0 +1,50 @@
+<%- include layouts/header.ejs %>
+
+<button class="btn btn-primary ml-4" onClick="addUser();">+ Add Employee</button>
+
+<div class="card-body">
+    <div class="table-responsive border">
+        <table class="table table-hover">
+            <thead class="table-info">
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if(data.length){
+
+            for(var i = 0;i < data.length;i++) { %>
+            <tr>
+                <td><%=(i+1)%></td>
+                <td><%=data[i].name%></td>
+                <td><%=data[i].address%></td>
+                <td><%=data[i].phone%></td>
+                <td><%=data[i].email%></td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="../employees/edit/<%=data[i].id%>">Edit</a>
+
+                    <a class="btn btn-danger btn-sm" href="../employees/delete/<%=data[i].id%>">Delete</a>
+
+                </td>
+            </tr>
+            </tbody>
+            <% }
+
+            }else{ %>
+            <tr>
+                <td colspan="3">No user</td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>
+
+<%- include layouts/footer.ejs %>
+
+
+
